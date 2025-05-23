@@ -1,0 +1,77 @@
+students = {}
+
+def add_student():
+    roll = input("Enter Roll Number: ")
+    name = input("Enter Name: ")
+    course = input("Enter Course: ")
+    marks = float(input("Enter Marks: "))
+    students[roll] = {"Name": name, "Course": course, "Marks": marks}
+    print("Student added successfully.\n")
+
+def display_student():
+    roll = input("Enter Roll Number to Display: ")
+    if roll in students:
+        print("\nStudent Details:")
+        print(f"Roll No: {roll}")
+        print(f"Name: {students[roll]['Name']}")
+        print(f"Course: {students[roll]['Course']}")
+        print(f"Marks: {students[roll]['Marks']}\n")
+    else:
+        print("Student not found.\n")
+
+def update_student():
+    roll = input("Enter Roll Number to Update: ")
+    if roll in students:
+        name = input("Enter New Name: ")
+        course = input("Enter New Course: ")
+        marks = float(input("Enter New Marks: "))
+        students[roll] = {"Name": name, "Course": course, "Marks": marks}
+        print("Student details updated.\n")
+    else:
+        print("Student not found.\n")
+
+def delete_student():
+    roll = input("Enter Roll Number to Delete: ")
+    if roll in students:
+        del students[roll]
+        print("Student deleted successfully.\n")
+    else:
+        print("Student not found.\n")
+
+def display_all():
+    if students:
+        print("\nAll Student Records:")
+        for roll, info in students.items():
+            print(f"Roll No: {roll}, Name: {info['Name']}, Course: {info['Course']}, Marks: {info['Marks']}")
+        print()
+    else:
+        print("No student records found.\n")
+
+def menu():
+    while True:
+        print("=== Student Management System ===")
+        print("1. Add Student")
+        print("2. Display Student")
+        print("3. Update Student")
+        print("4. Delete Student")
+        print("5. Display All Students")
+        print("6. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            add_student()
+        elif choice == '2':
+            display_student()
+        elif choice == '3':
+            update_student()
+        elif choice == '4':
+            delete_student()
+        elif choice == '5':
+            display_all()
+        elif choice == '6':
+            print("Exiting program.")
+            break
+        else:
+            print("Invalid choice. Try again.\n")
+
+menu()
